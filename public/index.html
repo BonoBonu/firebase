@@ -14,11 +14,8 @@
         <nav>
             <div class="nav-wrapper valign-wrapper">
                 <a href="#" id="aBackBtn" class="small material-icons left hiddendiv">arrow_back</a>
-                <span id="spTitle" class="brand-logo center">team10-translation chat</span>
-                <ul class="right hide-on-med-and-down">
-                  <li><a href="#dvtrans" id="atrans" class="hiddendiv">번역</a></li>
-                  <li><a href="#dvAddUser" id="aInvite" class="small material-icons hiddendiv modal-trigger">add</a></li>
-                </ul>
+                <span id="spTitle" class="brand-logo center">team10-chat</span>
+                <a href="#dvAddUser" id="aInvite" class="small material-icons hiddendiv modal-trigger">add</a>
             </div>
         </nav>
     </header>
@@ -45,6 +42,7 @@
             <ul id="ulMessageList" class="collection">
             </ul>
             <div id="dvMsgForm" class="meta-bar chat">
+                <i href="#dvtrans"id="atrans" class="small material-icons">g_translate</i>
                 <div id="dvInputChat" contenteditable="true" placeholder="메세지 작성"></div>
                 <i id='iBtnAttach' class="small material-icons">attach_file</i>
                 <i id='iBtnSend' class="small material-icons">send</i>
@@ -55,9 +53,9 @@
     <!-- footer 탭 영역 -->
     <footer>
         <ul id="tabs" class="tabs tabs-fixed-width">
-            <li class="tab col s3 blue darken-2"><a id="tabUserList" href="#tab-1"><i class="small material-icons white-text">person</i></a></li>
-            <li class="tab col s3 blue darken-2"><a id="tabRoomList" href="#tab-2"><i class="small material-icons white-text">message</i></a></li>
-            <li class="tab col s3 blue darken-2"><a id="tabSetting" href="#tab-3"><i class="small material-icons white-text">settings</i></a></li>
+            <li class="tab col s3 red darken-2"><a id="tabUserList" href="#tab-1"><i class="small material-icons white-text">person</i></a></li>
+            <li class="tab col s3 red darken-2"><a id="tabRoomList" href="#tab-2"><i class="small material-icons white-text">message</i></a></li>
+            <li class="tab col s3 red darken-2"><a id="tabSetting" href="#tab-3"><i class="small material-icons white-text">settings</i></a></li>
             <li class="tab col s3" style="display:none"><a id="tabMessageList" href="#tab-4"></a></li>
         </ul>
     </footer>
@@ -65,6 +63,13 @@
     <div id="dvAuth">
       <div id="dvLogin">
           <h5>로그인</h5>
+          <div id="dvSocial">
+              <ul class="btnGroup">
+                  <li id="liGoogleBtn" class="waves-effect waves-teal btn-flat"><i></i>구글 계정으로 가입 및 로그인</li>
+                  <li id="liFacebookBtn" class="waves-effect waves-teal btn-flat"><i></i>페이스북 계정으로 가입 및 로그인</li>
+              </ul>
+              <em class="or">or</em>
+          </div>
           <div id="dvEmail">
               <input type="email" id="userName" name="userName" class="input-text" placeholder="이메일 아이디">
               <input type="password" id="password" name="password" class="input-text" maxlength="17" placeholder="비밀번호">
@@ -104,25 +109,25 @@
           </ul>
         </div>
         <div class="modal-footer">
-            <a id="aConfirmInvite" href="#!" class="modal-action modal-close waves-effect waves-green btn blue white-text">추가</a>
+            <a id="aConfirmInvite" href="#!" class="modal-action modal-close waves-effect waves-green btn red white-text">추가</a>
         </div>
     </div>
-    <div id="dvtrans" class="trmodal" >
-
-      <div class="trmodal_content">
-          <h2>번역할 언어</h2>
-          <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" style="width: 120px; height: auto" class="scale" onclick="ko()"></li>
-          <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" style="width: 120px; height: auto" class="scale" onclick="en()"></li>
-          <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" style="width: 120px; height: auto" class="scale" onclick="ja()"></li>
-          <li><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" style="width: 120px; height: auto" class="scale"onclick="ch()"></li>
-          <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" style="width: 120px; height: auto" class="scale" onclick="fr()"></li>
-          <li><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" style="width: 120px; height: auto" class="scale" onclick="de()"></li>
-                 
-      </div>
-         
-  </div>
-
-    </div>
+    <div id="dvtrans" class="modal">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">translate</h4>
+        </div> -->
+          <ul>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" style="width: 120px; height: auto" type="button"></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" style="width: 120px; height: auto" type="button"></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" style="width: 120px; height: auto"  type="button"></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" style="width: 120px; height: auto" type="button"></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" style="width: 120px; height: auto"  type="button"></li>
+            <li><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" style="width: 120px; height: auto" type="button"></li>
+          </ul>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
     <!-- template 영역 -->
     <!-- template 유저리스트 영역 -->
     <script type="text/template" id="templateUserList">
@@ -175,6 +180,8 @@
            */
           FirebaseChat.prototype.init = function(){
               this.auth = firebase.auth();
+              this.liGoogleBtn = document.getElementById('liGoogleBtn');
+              this.liFacebookBtn = document.getElementById('liFacebookBtn');
               this.liEmailJoin = document.getElementById('liEmailJoin');
               this.dvLogin  = document.getElementById('dvLogin');
               this.dvJoin = document.getElementById('dvJoin');
@@ -189,9 +196,6 @@
               this.tabMessageList = document.getElementById('tabMessageList');
               this.aBackBtn = document.getElementById('aBackBtn');
               this.aInvite = document.getElementById('aInvite');
-
-              this.atrans = document.getElementById('atrans');
-
               this.MAKEID_CHAR = '@make@';
               this.DATETIME_CHAR = '@time@';
               this.spTitle = document.getElementById('spTitle');
@@ -202,7 +206,7 @@
               this.ONE_VS_ONE = 'ONE_VS_ONE';
               this.MULTI = 'MULTI';
               this.ulRoomList = document.getElementById('ulRoomList');
-              this.ORIGIN_TITLE = "team10-translation chat";
+              this.ORIGIN_TITLE = "Firebase-Tutorial";
               this.ulAddUserList = document.getElementById('ulAddUserList');
               this.aConfirmInvite =document.getElementById('aConfirmInvite');
               this.iBtnAttach = document.getElementById('iBtnAttach');
@@ -215,7 +219,9 @@
            * 초기 이벤트 바인딩
            */
           FirebaseChat.prototype.initEvent = function(){
+              this.liGoogleBtn.addEventListener('click', this.onGoogleBtnClick.bind(this));
               this.auth.onAuthStateChanged(this.onAuthChange.bind(this));
+              this.liFacebookBtn.addEventListener('click', this.onFacebookBtnClick.bind(this));
               this.liEmailJoin.addEventListener('click', this.displayEmailJoin.bind(this));
               this.liEmailJoinSubmit.addEventListener('click', this.createEmailUser.bind(this));
               this.liEmailBtn.addEventListener('click', this.onEmailBtnClick.bind(this));
@@ -414,9 +420,6 @@
               this.isOpenRoom = false;
               this.aBackBtn.classList.add('hiddendiv');
               this.aInvite.classList.add('hiddendiv');
-
-              this.atrans.classList.add('hiddendiv');
-
               document.getElementById(this.roomFlag).click();
               this.spTitle.innerText = this.ORIGIN_TITLE;
               this.ulMessageList.innerHTML='';
@@ -506,9 +509,6 @@
               this.roomFlag ='tabRoomList';
               this.aBackBtn.classList.remove('hiddendiv');
               this.aInvite.classList.remove('hiddendiv');
-
-              this.atrans.classList.remove('hiddendiv');
-
               // 메세지 로드
               this.roomId = event.currentTarget.getAttribute('data-roomId');
               this.roomTitle = event.currentTarget.getAttribute('data-roomTitle');
@@ -586,9 +586,6 @@
               this.roomFlag ='tabUserList';
               this.aBackBtn.classList.remove('hiddendiv'); // 백버튼 노출
               this.aInvite.classList.remove('hiddendiv'); // 초대 버튼 노툴
-
-              this.atrans.classList.remove('hiddendiv');
-
               var targetUserUid = event.currentTarget.getAttribute('data-targetUserUid');
               var targetUserName = event.currentTarget.getAttribute('data-username');
               var roomListTarget = document.querySelectorAll('[data-roomType="'+ this.ONE_VS_ONE+'"][data-roomOneVSOneTarget="'+ targetUserUid +'"]')[0];
@@ -1053,6 +1050,32 @@
           }
 
           /**
+           * 페이스북 로그인 버튼 클릭
+           */
+          FirebaseChat.prototype.onFacebookBtnClick = function(){
+              var facebookProvider = new firebase.auth.FacebookAuthProvider();
+              this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                  .then(this.signInWithPopup.bind(this, facebookProvider))
+                  .catch(function(error) {
+                      console.error('인증 상태 설정 중 에러 발생' , error);
+                  });
+          }
+
+          /**
+           * Google 로그인 버튼 클릭
+           */
+          FirebaseChat.prototype.onGoogleBtnClick = function(){
+              var googleProvider = new firebase.auth.GoogleAuthProvider();
+              this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                  .then(this.signInWithPopup.bind(this, googleProvider))
+                  .catch(function(error) {
+                      console.error('인증 상태 설정 중 에러 발생' , error);
+                  });
+          }
+
+
+
+          /**
            * Dom 로딩 후 동작
            */
           document.addEventListener('DOMContentLoaded', function() {
@@ -1063,7 +1086,7 @@
               $('#dnModal').modal();
               //채팅방 초대 modal 설정
               $('#dvAddUser').modal();
-              //번역 버튼 modal 설정
+
               $('#dvtrans').modal();
           });
       </script>
