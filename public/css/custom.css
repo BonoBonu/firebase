@@ -218,7 +218,7 @@ nav .brand-logo{
     padding-bottom:100px;
     overflow: hidden;
 }
-#aBackBtn, #aInvite, #trans{
+#aBackBtn, #aInvite, #atrans{
     z-index:10;
 }
 #ulMessageList{
@@ -255,26 +255,7 @@ span.small.material-icons.right{
     padding-top: 10px;
 }
 
-/* #transmodal {
-    display: none;
-    position:relative;
-    width:100%;
-    height:100%;
-    z-index:1;
-} */
 
-#transmodal h2 {
-margin:0;
-}
-
-#transmodal .modal_content {
-width:300px;
-margin:100px auto;
-padding:20px 10px;
-background:#fff;
-border:2px solid #666;
-overflow:hidden
-}
 .scale {
 transform: scale(1);
 -webkit-transform: scale(1);
@@ -290,13 +271,3 @@ transform: scale(1.2);
 -ms-transform: scale(1.2);
 -o-transform: scale(1.2);
 }
-/* 
-#transmodal .modal_layer {
-position:relative;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0, 0, 0, 0.5);
-z-index:-1;
-} */
