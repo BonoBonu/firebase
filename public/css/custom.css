@@ -254,7 +254,9 @@ span.small.material-icons.right{
     height: 45px;
     padding-top: 10px;
 }
-
+#dvtrans{
+   display: none;
+}
 
 .scale {
 transform: scale(1);
