@@ -16,7 +16,7 @@
                 <a href="#" id="aBackBtn" class="small material-icons left hiddendiv">arrow_back</a>
                 <span id="spTitle" class="brand-logo center">team10-translation chat</span>
                 <ul class="right hide-on-med-and-down">
-                  <li><a href="#transmodal" id="trans" class="hiddendiv">번역</a></li>
+                  <li><a href="#dvtrans" id="atrans" class="hiddendiv">번역</a></li>
                   <li><a href="#dvAddUser" id="aInvite" class="small material-icons hiddendiv modal-trigger">add</a></li>
                 </ul>
             </div>
@@ -107,9 +107,9 @@
             <a id="aConfirmInvite" href="#!" class="modal-action modal-close waves-effect waves-green btn blue white-text">추가</a>
         </div>
     </div>
-    <div id="transmodal" class="modal" >
+    <div id="dvtrans" class="trmodal" >
 
-      <div class="modal_content">
+      <div class="trmodal_content">
           <h2>번역할 언어</h2>
           <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" style="width: 120px; height: auto" class="scale" onclick="ko()"></li>
           <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" style="width: 120px; height: auto" class="scale" onclick="en()"></li>
@@ -190,7 +190,7 @@
               this.aBackBtn = document.getElementById('aBackBtn');
               this.aInvite = document.getElementById('aInvite');
 
-              this.trans = document.getElementById('trans');
+              this.atrans = document.getElementById('atrans');
 
               this.MAKEID_CHAR = '@make@';
               this.DATETIME_CHAR = '@time@';
@@ -415,7 +415,7 @@
               this.aBackBtn.classList.add('hiddendiv');
               this.aInvite.classList.add('hiddendiv');
 
-              this.trans.classList.add('hiddendiv');
+              this.atrans.classList.add('hiddendiv');
 
               document.getElementById(this.roomFlag).click();
               this.spTitle.innerText = this.ORIGIN_TITLE;
@@ -507,7 +507,7 @@
               this.aBackBtn.classList.remove('hiddendiv');
               this.aInvite.classList.remove('hiddendiv');
 
-              this.trans.classList.remove('hiddendiv');
+              this.atrans.classList.remove('hiddendiv');
 
               // 메세지 로드
               this.roomId = event.currentTarget.getAttribute('data-roomId');
@@ -587,7 +587,7 @@
               this.aBackBtn.classList.remove('hiddendiv'); // 백버튼 노출
               this.aInvite.classList.remove('hiddendiv'); // 초대 버튼 노툴
 
-              this.trans.classList.remove('hiddendiv');
+              this.atrans.classList.remove('hiddendiv');
 
               var targetUserUid = event.currentTarget.getAttribute('data-targetUserUid');
               var targetUserName = event.currentTarget.getAttribute('data-username');
@@ -1064,7 +1064,7 @@
               //채팅방 초대 modal 설정
               $('#dvAddUser').modal();
               //번역 버튼 modal 설정
-              $('#transmodal').modal();
+              $('#dvtrans').modal();
           });
       </script>
   </body>
