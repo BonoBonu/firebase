@@ -42,7 +42,7 @@
             <ul id="ulMessageList" class="collection">
             </ul>
             <div id="dvMsgForm" class="meta-bar chat">
-                <i href="#dvtrans"id="atrans" class="small material-icons">g_translate</i>
+                <i href="#dvtrans"id="atrans" class="small material-icons modal-trigger">g_translate</i>
                 <div id="dvInputChat" contenteditable="true" placeholder="메세지 작성"></div>
                 <i id='iBtnAttach' class="small material-icons">attach_file</i>
                 <i id='iBtnSend' class="small material-icons">send</i>
@@ -112,12 +112,9 @@
             <a id="aConfirmInvite" href="#!" class="modal-action modal-close waves-effect waves-green btn red white-text">추가</a>
         </div>
     </div>
-    <div id="dvtrans" class="modal">
+    <div id="dvtrans" class="modal bottom-sheet">
       <div class="modal-content">
-        <!-- <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">translate</h4>
-        </div> -->
+        <h4>translate</h4>
           <ul>
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" style="width: 120px; height: auto" type="button"></li>
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" style="width: 120px; height: auto" type="button"></li>
@@ -126,10 +123,13 @@
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" style="width: 120px; height: auto"  type="button"></li>
             <li><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" style="width: 120px; height: auto" type="button"></li>
           </ul>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+      </div>
+      <div class="modal-footer">
+          <a id="aConfirmtrans" href="#!" class="modal-action modal-close waves-effect waves-green btn red white-text">번역</a>
+      </div>
+    </div>
     <!-- template 영역 -->
-    <!-- template 유저리스트 영역 -->
+    <!-- template 유저리스트 영역-->
     <script type="text/template" id="templateUserList">
             <li id="li<%=targetUserUid %>" data-targetUserUid="<%=targetUserUid %>" data-username="<%=userName %>" class="collection-item avatar list">
                 <img src="<%=profileImg ? profileImg : 'img/noprofile.png'  %>" alt="" class="circle">
