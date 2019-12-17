@@ -115,17 +115,14 @@
     <div id="dvtrans" class="modal bottom-sheet">
       <div class="modal-content">
         <h4>translate</h4>
-          <ul>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" style="width: 120px; height: auto" type="button"></li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" style="width: 120px; height: auto" type="button"></li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" style="width: 120px; height: auto"  type="button"></li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" style="width: 120px; height: auto" type="button"></li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" style="width: 120px; height: auto"  type="button"></li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" style="width: 120px; height: auto" type="button"></li>
-          </ul>
-      </div>
-      <div class="modal-footer">
-          <a id="aConfirmtrans" href="#!" class="modal-action modal-close waves-effect waves-green btn red white-text">번역</a>
+        <div class="carousel">
+            <a id="aConfirmTrans" class="carousel-item" href="#ko"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg"></a>
+            <a id="aConfirmTrans" class="carousel-item" href="#en"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg"></a>
+            <a id="aConfirmTrans" class="carousel-item" href="#ja"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg"></a>
+            <a id="aConfirmTrans" class="carousel-item" href="#ch"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg"></a>
+            <a id="aConfirmTrans" class="carousel-item" href="#fr"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"></a>
+            <a id="aConfirmTrans" class="carousel-item" href="#de"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"></a>
+        </div>
       </div>
     </div>
     <!-- template 영역 -->
@@ -231,6 +228,9 @@
               this.dvInputChat.addEventListener("paste", this.onPaste.bind(this));
               this.aBackBtn.addEventListener('click', this.onBackBtnClick.bind(this));
               this.aConfirmInvite.addEventListener('click', this.onConfirmInviteClick.bind(this));
+
+              this.aConfirmTrans.addEventListener('click', this.onConfirmTransClick.bind(this));
+
               this.iBtnAttach.addEventListener('click', this.onBtnAttachClick.bind(this));
               this.attachFile.addEventListener('change', this.onAttachFile.bind(this));
           }
@@ -346,7 +346,12 @@
                   this.database.ref().update(multiUpdates);
               }
           }
+          /**
+           * 번역
+           */
+          FirebaseChat.prototype.onConfirmTransClick = function(){
 
+          }
           /**
            * 초대
            */
@@ -1088,6 +1093,8 @@
               $('#dvAddUser').modal();
 
               $('#dvtrans').modal();
+
+              $('.carousel').carousel();
           });
       </script>
   </body>
