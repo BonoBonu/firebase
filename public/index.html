@@ -114,15 +114,15 @@
     </div>
     <div id="dvtrans" class="modal bottom-sheet">
       <div class="modal-content">
-        <h4>translate</h4>
-        <a onclick="aConfirmTrans()" href="#!" class="modal-action modal-close right waves-effect waves-green btn white black-text">select</a>
+        <input id='country' disabled="disabled" type='text' value='select'/>
+        <a onclick="aConfirmTrans()" class="modal-action modal-close waves-effect right waves-red btn red white-text">Translate</a>
         <div class="carousel">
-            <a class="carousel-item" ><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" class="scale" onclick="ko()"></a>
-            <a class="carousel-item" ><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="scale" onclick="en()"></a>
-            <a class="carousel-item" ><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" class="scale" onclick="ja()"></a>
-            <a class="carousel-item" ><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" class="scale" onclick="ch()"></a>
-            <a class="carousel-item" ><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" class="scale" onclick="fr()"></a>
-            <a class="carousel-item" ><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" class="scale" onclick="de()"></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" class="scale" onclick="ko()" ></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="scale" onclick="en()"></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" class="scale" onclick="ja()"></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" class="scale" onclick="ch()"></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" class="scale" onclick="fr()"></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" class="scale" onclick="de()"></a>
         </div>
       </div>
     </div>
@@ -642,7 +642,7 @@
 
           FirebaseChat.trans =function(message){
             if(true){
-             alert('올asdadfs');
+             //alert('올asdadfs');
               //번역
             }
              return message;
@@ -1093,24 +1093,37 @@
           /**
            * 번역
            */
-          function aConfirmTrans(lang){
+          function aConfirmTrans(){
               alert('번역');
           }
 
           /**
            * 언어선택
            */
+
           function ko(){
+            var ch=document.getElementById("country");
+            ch.value="한국어"
           }
           function en(){
+            var ch=document.getElementById("country");
+            ch.value="ENGLISH"
           }
           function ja(){
+            var ch=document.getElementById("country");
+            ch.value="にっぽん"
           }
           function ch(){
+            var ch=document.getElementById("country");
+            ch.value="汉语·中文"
           }
           function fr(){
+            var ch=document.getElementById("country");
+            ch.value="français"
           }
           function de(){
+            var ch=document.getElementById("country");
+            ch.value="Deutsche Sprache"
           }
 
 
