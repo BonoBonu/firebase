@@ -84,7 +84,7 @@ footer{
     flex-direction:row;
 }
 .meta-bar.chat > #dvInputChat{
-    flex : 1 0 calc(100% - 50px);
+    flex : 1 0 calc(100% - 120px);
     border-bottom: none!important;
     padding-left : 10px;
 
@@ -95,7 +95,7 @@ footer{
 }
 .meta-bar.chat > i{
     padding-top: 7px;
-    margin-left: -10px;
+    margin-left: 5px;
     flex : 1 0 22px;
     cursor:pointer;
 }
