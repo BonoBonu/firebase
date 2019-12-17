@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Firebase-Tutorial</title>
+    <title>team10-chat</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="css/custom.css">
@@ -203,7 +203,7 @@
               this.ONE_VS_ONE = 'ONE_VS_ONE';
               this.MULTI = 'MULTI';
               this.ulRoomList = document.getElementById('ulRoomList');
-              this.ORIGIN_TITLE = "Firebase-Tutorial";
+              this.ORIGIN_TITLE = "team10-chat";
               this.ulAddUserList = document.getElementById('ulAddUserList');
               this.aConfirmInvite =document.getElementById('aConfirmInvite');
               this.iBtnAttach = document.getElementById('iBtnAttach');
@@ -434,10 +434,10 @@
               this.database = firebase.database(); // 인증 받은 후 초기화 하여야 합니다. 필드 변수에 서 할당하면 인증 받기전에 할당이라 에러발생
               this.database.goOnline(); // 데이터베이스를 명시적으로 온라인
               this.dvAuth.style.display = 'none';
-              this.checkAndSaveUser(user);
-              this.loadUserList();
-              this.loadRoomList();  //채팅방 목록불러오기
-              this.checkOnline();
+              this.checkAndSaveUser(user); 
+              this.loadUserList();   //유저 리스트 불러오기
+              this.loadRoomList();  //채팅방 목록 불러오기
+              this.checkOnline();  //다른 유저 접속 확인
           }
 
           /**
@@ -818,11 +818,11 @@
                       console.log('이메일 가입 성공 : ', JSON.stringify(user));
                       //프로필 업데이트 - 이메일 가입시 유저이름 파라미터를 보내지 않으므로 가입 성공 후 처리
                       user.updateProfile({
-                          displayName: this.userName,
+                          displayName: userName, //여기서 꼬여서 이름이 표시 안되었던 거시였던 것입니다.
                       }).then(function() {
-                          console.log('userName 업데이트 성공')
+                        console.log('userName 업데이트 성공')
                       }).catch(function(error) {
-                          console.error('userName 업데이트 실패 : ', error );
+                        console.log('userName 업데이트 실패 : ', error );
                       });
 
                       //인증 메일 발송
