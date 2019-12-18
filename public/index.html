@@ -114,9 +114,9 @@
     </div>
     <div id="dvtrans" class="modal bottom-sheet">
       <div class="modal-content">
-        <input id='country' disabled="disabled" type='text' value='select'/>
-        <a onclick="getback()" class="large material-icons modal-action modal-close waves-effect left waves-red blue white-text">undo</a>
-        <a onclick="FirebaseChat.prototype.aConfirmTrans(this.roomId)" class="large material-icons modal-action modal-close waves-effect right waves-red blue white-text">translate</a>
+        <input id='country' disabled="disabled" type='text' value='select' style="font-size:40pt; color: #000000; font-weight:bold;"/>
+        <a onclick="getback()" class="large material-icons modal-action modal-close waves-effect left waves-red grey white-text" style="font-size:40pt;">undo</a>
+        <a onclick="aConfirmTrans()" class="large material-icons modal-action modal-close waves-effect right waves-red grey white-text"style="font-size:40pt;">translate</a>====
         <div class="carousel">
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" class="scale" onclick="ko()" ></a>
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="scale" onclick="en()"></a>
@@ -678,9 +678,9 @@
             if(check==1){
                 if(message.indexOf("<a class=") == -1){ //업로드 메세지 예외처리
                     if(message.indexOf("이 초대되었습니다.") == -1){ //초대 메세지 예외처리
-                        return translate(lang, message, 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs');
+                        return translate(lang, message, 'api key');
                     }
-                    return message.replace("이 초대되었습니다", translate(lang, "이 초대되었습니다", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
+                    return message.replace("이 초대되었습니다", translate(lang, "이 초대되었습니다", 'api key'));
                 }
                 message = message.replace("다운로드", translate(lang, "다운로드", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
                 return message.replace("파일명", translate(lang, "파일명", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
@@ -1156,13 +1156,14 @@
            FirebaseChat.prototype.aConfirmTrans = function(){
               check=1;
               this.loadMessageList('translate');
-              alert("Please click on the chat room again!");
+              alert("Please try to enter the chattingroom again!");
+
           }
 
           function getback(){
               lang="none";
               check=0;
-              alert("Please click on the chat room again!");
+              alert("Please try to enter the chattingroom again!");
           }
 
 
