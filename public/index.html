@@ -63,13 +63,6 @@
     <div id="dvAuth">
       <div id="dvLogin">
           <h5>로그인</h5>
-          <div id="dvSocial">
-              <ul class="btnGroup">
-                  <li id="liGoogleBtn" class="waves-effect waves-teal btn-flat"><i></i>구글 계정으로 가입 및 로그인</li>
-                  <li id="liFacebookBtn" class="waves-effect waves-teal btn-flat"><i></i>페이스북 계정으로 가입 및 로그인</li>
-              </ul>
-              <em class="or">or</em>
-          </div>
           <div id="dvEmail">
               <input type="email" id="userName" name="userName" class="input-text" placeholder="이메일 아이디">
               <input type="password" id="password" name="password" class="input-text" maxlength="17" placeholder="비밀번호">
@@ -183,8 +176,6 @@
            */
           FirebaseChat.prototype.init = function(){
               this.auth = firebase.auth();
-              this.liGoogleBtn = document.getElementById('liGoogleBtn');
-              this.liFacebookBtn = document.getElementById('liFacebookBtn');
               this.liEmailJoin = document.getElementById('liEmailJoin');
               this.dvLogin  = document.getElementById('dvLogin');
               this.dvJoin = document.getElementById('dvJoin');
@@ -225,9 +216,7 @@
            * 초기 이벤트 바인딩
            */
           FirebaseChat.prototype.initEvent = function(){
-              this.liGoogleBtn.addEventListener('click', this.onGoogleBtnClick.bind(this));
               this.auth.onAuthStateChanged(this.onAuthChange.bind(this));
-              this.liFacebookBtn.addEventListener('click', this.onFacebookBtnClick.bind(this));
               this.liEmailJoin.addEventListener('click', this.displayEmailJoin.bind(this));
               this.liEmailJoinSubmit.addEventListener('click', this.createEmailUser.bind(this));
               this.liEmailBtn.addEventListener('click', this.onEmailBtnClick.bind(this));
@@ -1095,31 +1084,6 @@
               this.dvLogin.style.display='none';
               this.dvJoin.style.display='block';
           }
-
-          /**
-           * 페이스북 로그인 버튼 클릭
-           */
-          FirebaseChat.prototype.onFacebookBtnClick = function(){
-              var facebookProvider = new firebase.auth.FacebookAuthProvider();
-              this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-                  .then(this.signInWithPopup.bind(this, facebookProvider))
-                  .catch(function(error) {
-                      console.error('인증 상태 설정 중 에러 발생' , error);
-                  });
-          }
-
-          /**
-           * Google 로그인 버튼 클릭
-           */
-          FirebaseChat.prototype.onGoogleBtnClick = function(){
-              var googleProvider = new firebase.auth.GoogleAuthProvider();
-              this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-                  .then(this.signInWithPopup.bind(this, googleProvider))
-                  .catch(function(error) {
-                      console.error('인증 상태 설정 중 에러 발생' , error);
-                  });
-          }
-
 
 
           /**
