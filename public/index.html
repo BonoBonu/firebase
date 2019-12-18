@@ -116,7 +116,7 @@
       <div class="modal-content">
         <input id='country' disabled="disabled" type='text' value='select'/>
         <a onclick="getback()" class="large material-icons modal-action modal-close waves-effect left waves-red blue white-text">undo</a>
-        <a onclick="aConfirmTrans()" class="large material-icons modal-action modal-close waves-effect right waves-red blue white-text">translate</a>
+        <a onclick="FirebaseChat.prototype.aConfirmTrans(this.roomId)" class="large material-icons modal-action modal-close waves-effect right waves-red blue white-text">translate</a>
         <div class="carousel">
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" class="scale" onclick="ko()" ></a>
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="scale" onclick="en()"></a>
@@ -621,7 +621,30 @@
            */
           FirebaseChat.prototype.loadMessageList = function(roomId){
 
-              if(roomId){
+            // if(roomId == 'translate') {
+            //     this.ulMessageList.innerHTML = ''; //메세지 화면 리셋
+            //     var messageTemplate = document.getElementById('templateMessageList').innerHTML;
+            //     if(this.messageRef){  // 이전 메세지 ref 이벤트 제거
+            //         this.messageRef.off();
+            //     }
+            //     this.messageRef = this.database.ref('Messages/' + this.roomId);
+            //     var cbDisplayMessages = function(data) {
+            //         var messageHtml = '';
+            //         var val = data.val();
+            //         messageHtml = _.template(messageTemplate)({
+            //             key : data.key
+            //             , profileImg : val.profileImg
+            //             , userName : val.userName
+            //             , time : FirebaseChat.timestampToTime(val.timestamp)
+            //             , message : FirebaseChat.trans(val.message)
+            //         });
+            //         this.ulMessageList.innerHTML = this.ulMessageList.innerHTML + messageHtml;
+            //         this.ulMessageList.scrollTop = this.ulMessageList.scrollHeight;
+            //         this.roomTitle = val.roomTitle;
+            //       }
+            //       this.messageRef.limitToLast(50).once().then(cbDisplayMessages(snapshot));
+            // }
+           if(roomId){
                   this.ulMessageList.innerHTML = ''; //메세지 화면 리셋
                   var messageTemplate = document.getElementById('templateMessageList').innerHTML;
                   if(this.messageRef){  // 이전 메세지 ref 이벤트 제거
@@ -644,6 +667,7 @@
                   }
                   this.messageRef.limitToLast(50).on('child_added', cbDisplayMessages.bind(this));
               }
+
           }
 
           /**
@@ -658,6 +682,8 @@
                     }
                     return message.replace("이 초대되었습니다", translate(lang, "이 초대되었습니다", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
                 }
+                message = message.replace("다운로드", translate(lang, "다운로드", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
+                return message.replace("파일명", translate(lang, "파일명", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
             }
              return message;
           }
@@ -1127,8 +1153,9 @@
 
 
 
-          function aConfirmTrans(){
+           FirebaseChat.prototype.aConfirmTrans = function(){
               check=1;
+              this.loadMessageList('translate');
               alert("Please click on the chat room again!");
           }
 
@@ -1147,8 +1174,6 @@
             var ch=document.getElementById("country");
             ch.value="한국어"
             lang="ko";
-            this.openChatRoom(this.roomId);
-
           }
           function en(){
             var ch=document.getElementById("country");
