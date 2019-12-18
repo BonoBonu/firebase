@@ -115,7 +115,8 @@
     <div id="dvtrans" class="modal bottom-sheet">
       <div class="modal-content">
         <input id='country' disabled="disabled" type='text' value='select'/>
-        <a onclick="aConfirmTrans()" class="modal-action modal-close waves-effect right waves-red btn red white-text">Translate</a>
+        <a onclick="getback()" class="large material-icons modal-action modal-close waves-effect left waves-red">undo</a>
+        <a onclick="aConfirmTrans()" class="large material-icons modal-action modal-close waves-effect right waves-red">translate</a>
         <div class="carousel">
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" class="scale" onclick="ko()" ></a>
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="scale" onclick="en()"></a>
@@ -123,6 +124,7 @@
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" class="scale" onclick="ch()"></a>
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" class="scale" onclick="fr()"></a>
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" class="scale" onclick="de()"></a>
+            <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" class="scale" onclick="vi()"></a>
         </div>
       </div>
     </div>
@@ -165,6 +167,9 @@
       <script defer src="/__/firebase/4.6.1/firebase-storage.js"></script>
       <script defer src="/__/firebase/init.js"></script>
       <script>
+
+          var check=0;
+          var lang="none";
           /**
            *  FirebaseChat ES5 클래스
            */
@@ -209,6 +214,8 @@
               this.aConfirmInvite =document.getElementById('aConfirmInvite');
               this.iBtnAttach = document.getElementById('iBtnAttach');
               this.attachFile = document.getElementById('attachFile');
+
+
           }
 
 
@@ -232,6 +239,9 @@
 
               this.iBtnAttach.addEventListener('click', this.onBtnAttachClick.bind(this));
               this.attachFile.addEventListener('change', this.onAttachFile.bind(this));
+
+
+
           }
 
           /**
@@ -641,8 +651,8 @@
            */
 
           FirebaseChat.trans =function(message){
-            if(true){
-                return translate('ko', message, '여기 api키 넣어주세요'');
+            if(check==1){
+                return translate(lang, message, 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs');
             }
              return message;
           }
@@ -1109,9 +1119,20 @@
           /**
            * 번역
            */
+
+
+
           function aConfirmTrans(){
-              alert('번역');
+              check=1;
+              alert("Please click on the chat room again!");
           }
+
+          function getback(){
+              lang="none";
+              check=0;
+              alert("Please click on the chat room again!");
+          }
+
 
           /**
            * 언어선택
@@ -1120,26 +1141,37 @@
           function ko(){
             var ch=document.getElementById("country");
             ch.value="한국어"
+            lang="ko";
           }
           function en(){
             var ch=document.getElementById("country");
             ch.value="ENGLISH"
+            lang="en";
           }
           function ja(){
             var ch=document.getElementById("country");
             ch.value="にっぽん"
+            lang="ja";
           }
           function ch(){
             var ch=document.getElementById("country");
             ch.value="汉语·中文"
+            lang="zh";
           }
           function fr(){
             var ch=document.getElementById("country");
             ch.value="français"
+            lang="fr";
           }
           function de(){
             var ch=document.getElementById("country");
             ch.value="Deutsche Sprache"
+            lang="de";
+          }
+          function vi(){
+            var ch=document.getElementById("country");
+            ch.value="tiếng Việt"
+            lang="vi";
           }
 
 
