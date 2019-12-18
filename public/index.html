@@ -647,12 +647,17 @@
           }
 
           /**
-           * 번역 확인
+           * 번역 확인, api키 입력
            */
 
           FirebaseChat.trans =function(message){
             if(check==1){
-                return translate(lang, message, 'api key');
+                if(message.indexOf("<a class=") == -1){ //업로드 메세지 예외처리
+                    if(message.indexOf("이 초대되었습니다.") == -1){ //초대 메세지 예외처리
+                        return translate(lang, message, 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs');
+                    }
+                    return message.replace("이 초대되었습니다", translate(lang, "이 초대되었습니다", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
+                }
             }
              return message;
           }
@@ -1142,6 +1147,8 @@
             var ch=document.getElementById("country");
             ch.value="한국어"
             lang="ko";
+            this.openChatRoom(this.roomId);
+
           }
           function en(){
             var ch=document.getElementById("country");
