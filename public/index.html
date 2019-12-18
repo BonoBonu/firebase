@@ -642,7 +642,7 @@
 
           FirebaseChat.trans =function(message){
             if(true){
-                return translate('ko', message, '여기 api 키 넣어주세요');
+                return translate('ko', message, '여기 api키 넣어주세요'');
             }
              return message;
           }
@@ -652,7 +652,7 @@
               var translatedMessage;
             var url = "https://translation.googleapis.com/language/translate/v2?key=" + strApiKey;
             url += "&target=" + strTargetLang;
-            url += "&q=" + escape(strSourceText);
+            url += "&q=" + strSourceText;
             $.ajax({
                 url : url,
                 type: "GET",
@@ -661,7 +661,6 @@
                     translatedMessage =  data.data.translations[0].translatedText;
                 }
             });
-            typeof(translatedMessage);
             return translatedMessage;
           }
 
