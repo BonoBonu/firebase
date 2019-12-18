@@ -115,8 +115,8 @@
     <div id="dvtrans" class="modal bottom-sheet">
       <div class="modal-content">
         <input id='country' disabled="disabled" type='text' value='select' style="font-size:40pt; color: #000000; font-weight:bold;"/>
-        <a onclick="getback()" class="large material-icons modal-action modal-close waves-effect left waves-red grey white-text" style="font-size:40pt;">undo</a>
-        <a onclick="aConfirmTrans()" class="large material-icons modal-action modal-close waves-effect right waves-red grey white-text"style="font-size:40pt;">translate</a>====
+        <a id="getbackBtn" class="large material-icons modal-action modal-close waves-effect left waves-red grey white-text" style="font-size:40pt;">undo</a>
+        <a id="aConfirmTrans" class="large material-icons modal-action modal-close waves-effect right waves-red grey white-text"style="font-size:40pt;">translate</a>
         <div class="carousel">
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" class="scale" onclick="ko()" ></a>
             <a class="carousel-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="scale" onclick="en()"></a>
@@ -215,7 +215,8 @@
               this.iBtnAttach = document.getElementById('iBtnAttach');
               this.attachFile = document.getElementById('attachFile');
 
-
+              this.aConfirmTrans = document.getElementById('aConfirmTrans');
+              this.getbackBtn = document.getElementById('getbackBtn')
           }
 
 
@@ -240,8 +241,8 @@
               this.iBtnAttach.addEventListener('click', this.onBtnAttachClick.bind(this));
               this.attachFile.addEventListener('change', this.onAttachFile.bind(this));
 
-
-
+              this.aConfirmTrans.addEventListener('click', this.onConfirmTransClick.bind(this))
+              this.getbackBtn.addEventListener('click', this.getback.bind(this))
           }
 
           /**
@@ -420,10 +421,6 @@
             }
             arrAddUserList.forEach(cbArrayForEach.bind(this));
           }
-
-
-
-
 
           /**
            * 백버튼 클릭
@@ -621,30 +618,7 @@
            */
           FirebaseChat.prototype.loadMessageList = function(roomId){
 
-            // if(roomId == 'translate') {
-            //     this.ulMessageList.innerHTML = ''; //메세지 화면 리셋
-            //     var messageTemplate = document.getElementById('templateMessageList').innerHTML;
-            //     if(this.messageRef){  // 이전 메세지 ref 이벤트 제거
-            //         this.messageRef.off();
-            //     }
-            //     this.messageRef = this.database.ref('Messages/' + this.roomId);
-            //     var cbDisplayMessages = function(data) {
-            //         var messageHtml = '';
-            //         var val = data.val();
-            //         messageHtml = _.template(messageTemplate)({
-            //             key : data.key
-            //             , profileImg : val.profileImg
-            //             , userName : val.userName
-            //             , time : FirebaseChat.timestampToTime(val.timestamp)
-            //             , message : FirebaseChat.trans(val.message)
-            //         });
-            //         this.ulMessageList.innerHTML = this.ulMessageList.innerHTML + messageHtml;
-            //         this.ulMessageList.scrollTop = this.ulMessageList.scrollHeight;
-            //         this.roomTitle = val.roomTitle;
-            //       }
-            //       this.messageRef.limitToLast(50).once().then(cbDisplayMessages(snapshot));
-            // }
-           if(roomId){
+            if(roomId){
                   this.ulMessageList.innerHTML = ''; //메세지 화면 리셋
                   var messageTemplate = document.getElementById('templateMessageList').innerHTML;
                   if(this.messageRef){  // 이전 메세지 ref 이벤트 제거
@@ -678,19 +652,20 @@
             if(check==1){
                 if(message.indexOf("<a class=") == -1){ //업로드 메세지 예외처리
                     if(message.indexOf("이 초대되었습니다.") == -1){ //초대 메세지 예외처리
-                        return translate(lang, message, 'api key');
+                        return translate(lang, message);
                     }
-                    return message.replace("이 초대되었습니다", translate(lang, "이 초대되었습니다", 'api key'));
+                    return message.replace("이 초대되었습니다", translate(lang, "이 초대되었습니다"));
                 }
-                message = message.replace("다운로드", translate(lang, "다운로드", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
-                return message.replace("파일명", translate(lang, "파일명", 'AIzaSyAJQ1plX-2cwYmabY6tVgclkjBxqUKaNbs'));
+                message = message.replace("다운로드", translate(lang, "다운로드"));
+                return message.replace("파일명", translate(lang, "파일명"));
             }
              return message;
           }
 
-          function translate(strTargetLang, strSourceText, strApiKey)
+          function translate(strTargetLang, strSourceText)
           {
               var translatedMessage;
+              var strApiKey = 'APIKEY';
             var url = "https://translation.googleapis.com/language/translate/v2?key=" + strApiKey;
             url += "&target=" + strTargetLang;
             url += "&q=" + strSourceText;
@@ -1150,20 +1125,15 @@
           /**
            * 번역
            */
-
-
-
-           FirebaseChat.prototype.aConfirmTrans = function(){
+           FirebaseChat.prototype.onConfirmTransClick = function(){
               check=1;
-              this.loadMessageList('translate');
-              alert("Please try to enter the chattingroom again!");
-
+              this.loadMessageList(this.roomId);
           }
 
-          function getback(){
+          FirebaseChat.prototype.getback = function (){
               lang="none";
               check=0;
-              alert("Please try to enter the chattingroom again!");
+              this.loadMessageList(this.roomId);
           }
 
 
