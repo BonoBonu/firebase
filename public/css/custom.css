@@ -271,8 +271,3 @@ a .scale:hover {
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
 }
-#country{
-  font-size: 2rem;
-  font-weight: bold;
-
-}
