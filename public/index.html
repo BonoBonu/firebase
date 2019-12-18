@@ -642,19 +642,27 @@
 
           FirebaseChat.trans =function(message){
             if(true){
-                translate('ko', message, '여기 api키 필요');
+                return translate('ko', message, '여기 api 키 넣어주세요');
             }
              return message;
           }
 
           function translate(strTargetLang, strSourceText, strApiKey)
           {
+              var translatedMessage;
             var url = "https://translation.googleapis.com/language/translate/v2?key=" + strApiKey;
             url += "&target=" + strTargetLang;
             url += "&q=" + escape(strSourceText);
-            $.get(url, function (data, status) {
-                    alert(typeof(data.data.translations[0].translatedText));
+            $.ajax({
+                url : url,
+                type: "GET",
+                async: false,
+                success: function (data, status) {
+                    translatedMessage =  data.data.translations[0].translatedText;
+                }
             });
+            typeof(translatedMessage);
+            return translatedMessage;
           }
 
           /**
