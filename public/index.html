@@ -642,10 +642,19 @@
 
           FirebaseChat.trans =function(message){
             if(true){
-             //alert('올asdadfs');
-              //번역
+                translate('ko', message, '여기 api키 필요');
             }
              return message;
+          }
+
+          function translate(strTargetLang, strSourceText, strApiKey)
+          {
+            var url = "https://translation.googleapis.com/language/translate/v2?key=" + strApiKey;
+            url += "&target=" + strTargetLang;
+            url += "&q=" + escape(strSourceText);
+            $.get(url, function (data, status) {
+                    alert(typeof(data.data.translations[0].translatedText));
+            });
           }
 
           /**
